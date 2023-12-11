@@ -1,28 +1,24 @@
 package com.poja.prime.endpoint.rest.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.poja.prime.conf.FacadeIT;
 import java.math.BigInteger;
-import java.security.SecureRandom;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class PrimeControllerIT {
+class PrimeControllerIT extends FacadeIT {
+  @Autowired PrimeController primeController;
+
   @Test
-  public void testGenerateNewPrime() {
-    PrimeController primeController = new PrimeController();
-
-    SecureRandom secureRandomMock = Mockito.mock(SecureRandom.class);
-
-    Mockito.when(secureRandomMock.nextInt()).thenReturn(1);
-
-    primeController.setSecureRandom(secureRandomMock);
-
+  void generateNewPrime_returnsValidNumber() {
     String result = primeController.generateNewPrime();
 
     BigInteger generatedPrime = new BigInteger(result);
-    Assertions.assertEquals(
-        10000,
+    int expectedBitLength = 10_000;
+    assertEquals(
+        expectedBitLength,
         generatedPrime.bitLength(),
-        "The length of prime number generated is different of 10_000 bits");
+        "The length of the prime number generated isn't the same as 10_000 bits");
   }
 }
