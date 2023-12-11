@@ -2,10 +2,7 @@ package com.poja.prime.endpoint.rest.controller;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-
-import lombok.AllArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
