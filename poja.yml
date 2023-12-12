@@ -1,5 +1,5 @@
 app_name: poja-prime
-cli_version: 4.0.0
+cli_version: 4.1.2
 custom_java_deps: poja-custom-java-deps.txt
 custom_java_env_vars: poja-custom-java-env-vars.txt
 custom_java_repositories: poja-custom-java-repositories.txt
@@ -7,9 +7,9 @@ frontal_memory: 512
 jacoco-min-coverage: '0.8'
 package_full_name: com.poja.prime
 region: eu-west-3
-ssm_sg_id: /poja/sg/id
-ssm_subnet1_id: /poja/subnet1/id
-ssm_subnet2_id: /poja/subnet2/id
+ssm_sg_id: /poja-prime/sg/id
+ssm_subnet1_id: /poja-prime/subnet1/id
+ssm_subnet2_id: /poja-prime/subnet2/id
 ts_client_api_url_env_var_name: ''
 ts_client_default_openapi_server_url: ''
 with_gen_clients: 'false'

@@ -15,15 +15,16 @@ Globals:
       ApplyOn: PublishedVersions
     VpcConfig:
       SecurityGroupIds:
-        - !Sub '{{resolve:ssm:/poja/sg/id}}'
+        - !Sub '{{resolve:ssm:/poja-prime/sg/id}}'
       SubnetIds:
-        - !Sub '{{resolve:ssm:/poja/subnet/private1/id}}'
-        - !Sub '{{resolve:ssm:/poja/subnet/private2/id}}'
+        - !Sub '{{resolve:ssm:/poja-prime/subnet1/id}}'
+        - !Sub '{{resolve:ssm:/poja-prime/subnet2/id}}'
     Environment:
       Variables:
         ENV: !Ref Env
         AWS_SQS_QUEUE_URL: !Sub '{{resolve:ssm:/poja-prime/${Env}/sqs/mailbox-queue-url}}'
         AWS_EVENTBRIDGE_BUS: !Sub '{{resolve:ssm:/poja-prime/${Env}/eventbridge/bus-name}}'
+        AWS_S3_BUCKET: !Sub '{{resolve:ssm:/poja-prime/${Env}/s3/bucket-name}}'
         DATABASE_URL: !Sub '{{resolve:ssm:/poja-prime/${Env}/db/url}}'
         DATABASE_USERNAME: !Sub '{{resolve:ssm:/poja-prime/${Env}/db/username}}'
         DATABASE_PASSWORD: !Sub '{{resolve:ssm:/poja-prime/${Env}/db/password}}'
