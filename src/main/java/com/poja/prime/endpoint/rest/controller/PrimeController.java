@@ -1,20 +1,20 @@
 package com.poja.prime.endpoint.rest.controller;
 
+import com.poja.prime.service.event.PrimeService;
 import java.math.BigInteger;
-import java.security.SecureRandom;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/prod")
+@AllArgsConstructor
 public class PrimeController {
+  private final PrimeService primeService;
 
   @GetMapping("/new-prime")
-  public String generateNewPrime() {
-    SecureRandom secureRandom = new SecureRandom();
-    BigInteger prime = BigInteger.probablePrime(10_000, secureRandom);
-
-    return prime.toString();
+  public BigInteger generatePrime() {
+    return primeService.generatePrimeNumber();
   }
 }

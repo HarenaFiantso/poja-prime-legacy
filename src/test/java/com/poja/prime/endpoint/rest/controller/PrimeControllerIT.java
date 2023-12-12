@@ -1,6 +1,6 @@
 package com.poja.prime.endpoint.rest.controller;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.poja.prime.conf.FacadeIT;
 import java.math.BigInteger;
@@ -11,14 +11,10 @@ class PrimeControllerIT extends FacadeIT {
   @Autowired PrimeController primeController;
 
   @Test
-  void generateNewPrime_returnsValidNumber() {
-    String result = primeController.generateNewPrime();
+  void new_prime_ok() {
+    BigInteger actual = primeController.generateNewPrime();
 
-    BigInteger generatedPrime = new BigInteger(result);
-    int expectedBitLength = 10_000;
-    assertEquals(
-        expectedBitLength,
-        generatedPrime.bitLength(),
-        "The length of the prime number generated isn't the same as 10_000 bits");
+    int certainly = (int) (99.99 * 100);
+    assertTrue(actual.isProbablePrime(certainly));
   }
 }
